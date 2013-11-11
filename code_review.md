@@ -62,11 +62,13 @@ Line 1: misspelled ActiveRecord::Base
 
 According to the schema, a house should have many students
 We should be using `has_many :students` 
+File is misnamed. Should be house.rb
 
 Line 1: Needs to inherit from ActiveRecord::Base. Not ActiveRecord
 Line 1: Should be singular named, so use `class House` instead of `houses`
 Line 2: Should be attr_accessible
 Line 2: house_name should be just name
+Line 2: should be `attr_accesible`
 
 ### Views
 
