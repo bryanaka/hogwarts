@@ -19,10 +19,10 @@ changed to using the `change` method instead of up and down
 
 ### Routes
 
-Line 2: Incorrect syntax. This should be `root to: 'welcome/index'`
-Line 4: List is not the correct action. by convention, this should be #index
-Line 6: Should be POST HTTP verb, not GET
-Line 6: create action is misspelled
+- Incorrect syntax for declaring the root. This should be `root to: 'welcome#index'` with a controller and action
+- List is not the correct action. by convention, this should be #index
+- create action is misspelled
+- create action should be mapped to POST, not GET
 
 ### Controllers
 
@@ -44,19 +44,19 @@ Code is not correctly indented or spaced, this lead to missing the closing `end`
 and created an error
 
 ##### Index
-Line 4: `Students.all` should be `Student.all`
+
+- `Students.all` should be `Student.all`
 
 ##### Show
-Line 6: Student instance variable is misspelled
-Line 6: `params[:student]` isn't currently set by the route
-Isn't fetching any data from the database
+- Student instance variable is misspelled
+- `params[:student]` isn't currently set by the route
+- Isn't fetching any data from the database, use `Student.find(params[:id])`
 
 ##### New
-Line 9: params is misspelled
-Line 10: This is not the way to create a Student in Rails, Line 9 and 10 are 
-trying to do something about it
-Line 11: house is undefined right now, so you can't use the << operation on it
-Line 12: index is misspelled
+- params is misspelled
+- `#new` should not be creating the resource. that is what the create action is for.
+- house is undefined right now, so you can't use the << operation on it
+- index is misspelled
 
 ### Models
 

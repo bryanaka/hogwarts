@@ -5,14 +5,20 @@ class StudentsController < ApplicationController
   end
 
   def show
-    @sudent = params[:student]
+    @student = Student.find(params[:id])
   end
 
   def new
-    new_student = Student.new(parmas)
-    student = Student.create
-    house << student
-    redirect to 'idnex'
+    @student = Student.new
+  end
+
+  def create
+    @student = Student.new(params[:student])
+    if Student.create!(params[:student])
+      redirect_to @student
+    else
+      render "new"
+    end
   end
   
 end
