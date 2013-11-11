@@ -6,6 +6,17 @@ Code Review Report
 Bugs
 -------------------------------------------------------------------------------
 
+### Migrations
+
+Relationship was not set up correctly. A House has many students, so the students needed the reference, not the house.
+
+create_table block for house was missing the t block argument
+
+The table needs to be plural so changed to houses.
+
+changed to using the `change` method instead of up and down
+
+
 ### Routes
 
 Line 2: Incorrect syntax. This should be `root to: 'welcome/index'`
@@ -25,7 +36,8 @@ Line 3: as a convention, instance variable should probably be `@houses`
 
 #### StudentsController
 
-Code is not correctly indented or spaced
+Code is not correctly indented or spaced, this lead to missing the closing `end`
+and created an error
 
 ##### Show
 Line 6: Student instance variable is misspelled
