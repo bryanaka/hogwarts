@@ -3,6 +3,8 @@ require 'test_helper'
 class StudentsControllerTest < ActionController::TestCase
   setup do
     @harry = students(:harry)
+    @harry.house = House.create(:name => "Gryffindor")
+    @harry.save
   end
 
   test "gets index" do
@@ -27,7 +29,7 @@ class StudentsControllerTest < ActionController::TestCase
       post :create, :student => { :name => "Ron Weasley" }
     end
 
-    assert_redirected_to students_path( assigns(:student) )
+    assert_redirected_to student_path( assigns(:student) )
   end
 
   test "redirects to a #new if student is not present" do

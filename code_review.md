@@ -1,7 +1,15 @@
 Code Review Report
 ===============================================================================
 
+Sorting Hat
+----------------
 
+I personally don't like that this is in the Student Model and think the sorting hat may be a service object.
+However, if I was teaching a student who is new, it would be a disservice to overcomplicate things
+when they obviously have other concerns right now. So I left it in the model to support the ideology of fat models.
+
+I also am not a huge fan of callbacks (see Ernie Miller's talks about it), but it is a rails-ism as well, 
+so I used them.
 
 Bugs
 -------------------------------------------------------------------------------
@@ -130,10 +138,12 @@ should look like this: `<% end %>` since they are not rendering anything.
 
 #### student/new.html.erb
 
-Lines 2-7: Unless you are familiar with Rails internals and have a special edge 
+Unless you are familiar with Rails internals and have a special edge 
 case, I would stick to using the Rails Form Helpers. Form Helpers will make 
 sure that the information is formated in the way Rails wants it, and will 
 help prevent Cross Site Request Forgery (CSRF).
+
+- h1 tag wasn't closed
 
 Areas to Improve
 -------------------------------------------------------------------------------

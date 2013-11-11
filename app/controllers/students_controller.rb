@@ -15,9 +15,9 @@ class StudentsController < ApplicationController
   def create
     @student = Student.new(params[:student])
     if @student.save
-      redirect_to students_path(@student)
+      redirect_to action: "show", id: @student.id
     else
-      redirect_to students_new_path
+      redirect_to new_student_path
     end
   end
   
