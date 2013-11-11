@@ -8,7 +8,7 @@ Bugs
 
 ### Routes
 
-Line 2: Inccorrect syntax. This should be `root to: 'welcome/index'`
+Line 2: Incorrect syntax. This should be `root to: 'welcome/index'`
 Line 4: List is not the correct action. by convention, this should be #index
 Line 6: Should be POST HTTP verb, not GET
 Line 6: create action is misspelled
@@ -39,10 +39,6 @@ trying to do something about it
 Line 11: house is undefined right now, so you can't use the << operation on it
 Line 12: index is misspelled
 
-Several spelling errors
-New action
-
-
 ### Models
 
 #### Student
@@ -60,6 +56,57 @@ Line 1: Should be singular named, so use `class House` instead of `houses`
 Line 2: Should be attr_accessible
 Line 2: house_name should be just name
 
+### Views
+
+#### Welcome/index.html.erb
+
+Will not be rendered, since it is not associated with a controller. It is a 
+common pattern to use a PagesController or a gem like thoughtbot's `high voltage`
+which essentially takes care of the PageController for you. In this case though,
+it has no dynamic content and can also be placed in the public folder to be 
+served up.
+
+For now we will use a basic PagesController, just because the attempted use of
+`root to: ` in the routes file implies that it was going to use a controller.
+
+#### houses/index.html.erb
+
+Line 2: code is using `house` instead of the `h` block variable set in Line 1
+Line 2: This could be done easier with a rails `link_to` helper.
+
+#### houses/show.html.erb
+
+HousesController has no #show action, but the application implies it should 
+have one
+
+Line 1: Should be using a `<%=` because it is suppose to be rendering
+Line 4: Extra closing `</li>` 
+Line 5: `<ul>` needs to go after the `<% end %>`
+
+### student should be students by convention
+
+#### student/create.html.erb
+
+Create is an action that simply creates a record/resource. In this case,
+StudentController#create should be creating the new student, then redirect 
+elsewhere. By convention, #create, #update, and #delete Actions do not usually 
+have views associated with them. Instead, the #index, #edit, #new, #show actions 
+do have views.
+
+#### student/index.html.erb
+
+Line 1: `the` is misspelled
+Line 2: `student` is misspelled in the block argument
+Line 3: The link is not valid. should be `<%= link_to show_student_path(student) %>`
+Line 4: Only use `<%=` when you are rendering something. Control statements 
+should look like this: `<% end %>` since they are not rendering anything.
+
+#### student/new.html.erb
+
+Lines 2-7: Unless you are familiar with Rails internals and have a special edge 
+case, I would stick to using the Rails Form Helpers. Form Helpers will make 
+sure that the information is formated in the way Rails wants it, and will 
+help prevent Cross Site Request Forgery (CSRF).
 
 Areas to Improve
 -------------------------------------------------------------------------------
