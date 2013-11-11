@@ -1,0 +1,15 @@
+harry:
+  name: Harry Potter
+  house_id: 1
+
+malfoy:
+  name: Draco Malfoy
+  house_id: 2
+
+asian_girl_from_hufflepuff:
+  name: h
+  house_id: 3
+
+ravenclaw_person:
+  name: r
+  house_id: 4
