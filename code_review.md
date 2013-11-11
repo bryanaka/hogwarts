@@ -34,10 +34,17 @@ File is named incorrectly
 
 Line 3: as a convention, instance variable should probably be `@houses`
 
+##### show
+
+Was missing this action
+
 #### StudentsController
 
 Code is not correctly indented or spaced, this lead to missing the closing `end`
 and created an error
+
+##### Index
+Line 4: `Students.all` should be `Student.all`
 
 ##### Show
 Line 6: Student instance variable is misspelled
