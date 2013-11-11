@@ -87,22 +87,28 @@ which essentially takes care of the PageController for you. In this case though,
 it has no dynamic content and can also be placed in the public folder to be 
 served up.
 
-For now we will use a basic PagesController, just because the attempted use of
-`root to: ` in the routes file implies that it was going to use a controller.
+For now we will dump it in the public directory, until dynamic content or 
+maintaining the layout becomes even a little difficult.
+
+#### layouts/application.html.erb
+
+Should have a `<%= yield %>` in the body in order to render the views inside the layout
+
 
 #### houses/index.html.erb
 
-Line 2: code is using `house` instead of the `h` block variable set in Line 1
-Line 2: This could be done easier with a rails `link_to` helper.
+- code is using `house` instead of the `h` block variable set in Line 1, but 
+should probably use house all the way through
+- This could be done easier with a rails `link_to` helper.
 
 #### houses/show.html.erb
 
 HousesController has no #show action, but the application implies it should 
 have one
 
-Line 1: Should be using a `<%=` because it is suppose to be rendering
-Line 4: Extra closing `</li>` 
-Line 5: `<ul>` needs to go after the `<% end %>`
+- Should be using a `<%=` because it is suppose to be rendering
+- Extra closing `</li>` 
+- `<ul>` needs to go after the `<% end %>`
 
 ### student should be students by convention
 
