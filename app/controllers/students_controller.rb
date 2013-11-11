@@ -14,10 +14,10 @@ class StudentsController < ApplicationController
 
   def create
     @student = Student.new(params[:student])
-    if Student.create!(params[:student])
-      redirect_to @student
+    if @student.save
+      redirect_to students_path(@student)
     else
-      render "new"
+      redirect_to students_new_path
     end
   end
   

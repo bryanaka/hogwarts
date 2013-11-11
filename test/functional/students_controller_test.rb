@@ -23,7 +23,6 @@ class StudentsControllerTest < ActionController::TestCase
   end
 
   test "creates a new student" do
-    flunk
     assert_difference('Student.count') do
       post :create, :student => { :name => "Ron Weasley" }
     end
@@ -32,15 +31,13 @@ class StudentsControllerTest < ActionController::TestCase
   end
 
   test "redirects to a #new if student is not present" do
-    flunk
     post :create
-    assert_redirected_to new_students_path
+    assert_redirected_to '/students/new'
   end
 
   test "redirects to a #new if student is invalid" do
-    flunk
-    post :create, :student => { :name => nil, :fav_food => "Pizza" }
-    assert_redirected_to new_students_path
+    post :create, :student => { :name => nil }
+    assert_redirected_to '/students/new'
   end
 
 end
