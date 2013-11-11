@@ -16,13 +16,13 @@ Bugs
 
 ### Migrations
 
-Relationship was not set up correctly. A House has many students, so the students needed the reference, not the house.
+- Relationship was not set up correctly. A House has many students, so the students needed the reference, not the house.
 
-create_table block for house was missing the t block argument
+- create_table block for house was missing the t block argument
 
-The table needs to be plural so changed to houses.
+- The table needs to be plural so changed to houses.
 
-changed to using the `change` method instead of up and down
+- changed to using the `change` method instead of up and down
 
 
 ### Routes
@@ -36,19 +36,19 @@ changed to using the `change` method instead of up and down
 
 #### HousesController
 
-File is named incorrectly
+- File is named incorrectly
 
 ##### index
 
-Line 3: as a convention, instance variable should probably be `@houses`
+- as a convention, instance variable should probably be `@houses`
 
 ##### show
 
-Was missing this action
+- Was missing this action
 
 #### StudentsController
 
-Code is not correctly indented or spaced, this lead to missing the closing `end`
+- Code is not correctly indented or spaced, this lead to missing the closing `end`
 and created an error
 
 ##### Index
@@ -70,8 +70,8 @@ and created an error
 
 #### Student
 
-Line 1: don't use def here, should be a class
-Line 1: misspelled ActiveRecord::Base
+- don't use def here, should be a class
+- misspelled ActiveRecord::Base
 
 #### House
 
@@ -79,11 +79,11 @@ According to the schema, a house should have many students
 We should be using `has_many :students` 
 File is misnamed. Should be house.rb
 
-Line 1: Needs to inherit from ActiveRecord::Base. Not ActiveRecord
-Line 1: Should be singular named, so use `class House` instead of `houses`
-Line 2: Should be attr_accessible
-Line 2: house_name should be just name
-Line 2: should be `attr_accesible`
+- Needs to inherit from ActiveRecord::Base. Not ActiveRecord
+- Should be singular named, so use `class House` instead of `houses`
+- Should be attr_accessible
+- house_name should be just name
+- should be `attr_accesible`, `attr_accessor` is a ruby method for getters and setters
 
 ### Views
 
@@ -95,13 +95,13 @@ which essentially takes care of the PageController for you. In this case though,
 it has no dynamic content and can also be placed in the public folder to be 
 served up.
 
-For now we will dump it in the public directory, until dynamic content or 
+For now we will leave it in the public directory, until dynamic content is needed or 
 maintaining the layout becomes even a little difficult.
 
 #### layouts/application.html.erb
 
-Should have a `<%= yield %>` in the body in order to render the views inside the layout
-
+- Should have a `<%= yield %>` in the body in order to render the views inside the layout
+- Moved Scripts to the bottom of the page. This will just better practice.
 
 #### houses/index.html.erb
 
@@ -118,25 +118,22 @@ have one
 - Extra closing `</li>` 
 - `<ul>` needs to go after the `<% end %>`
 
-### student should be students by convention
+### student should be students by convention in the folder structure
 
-#### student/create.html.erb
+#### students/create.html.erb
 
-Create is an action that simply creates a record/resource. In this case,
-StudentController#create should be creating the new student, then redirect 
-elsewhere. By convention, #create, #update, and #delete Actions do not usually 
-have views associated with them. Instead, the #index, #edit, #new, #show actions 
-do have views.
+Create is an action that simply creates a record/resource, then redirects. Shouldn't
+have a template
 
-#### student/index.html.erb
+#### students/index.html.erb
 
-Line 1: `the` is misspelled
-Line 2: `student` is misspelled in the block argument
-Line 3: The link is not valid. should be `<%= link_to show_student_path(student) %>`
-Line 4: Only use `<%=` when you are rendering something. Control statements 
+- `the` is misspelled
+- `student` is misspelled in the block argument
+- The link is not valid. should be `<%= link_to student_path(student) %>`
+- Only use `<%=` when you are rendering something. Control statements 
 should look like this: `<% end %>` since they are not rendering anything.
 
-#### student/new.html.erb
+#### students/new.html.erb
 
 Unless you are familiar with Rails internals and have a special edge 
 case, I would stick to using the Rails Form Helpers. Form Helpers will make 
@@ -148,12 +145,20 @@ help prevent Cross Site Request Forgery (CSRF).
 Areas to Improve
 -------------------------------------------------------------------------------
 
-No Tests
-
-Add Ruby Version and Ruby Gemset files
+- No Tests, should probably talk about TDD
+- Knowledge of conventions was partially there, but needs a lot of reinforcement.
 
 
 Takeaways
 -------------------------------------------------------------------------------
 
+The student doens't seems to have a strong understading of the rails conventions. 
+Probably the best idea is to teach them about rails generators and look at the 
+code they produce. Though using scaffolds is looked down upon in production, it 
+would help the student get a better idea of all the rails-isms. Maybe write an App
+with one scaffolded resource and two non-scaffolded resources.
+
+Also, there were a lot of spelling and syntax errors. We may want to follow up 
+on what kind of editor they are using. It may help to set them up with something 
+that will alert them about syntax errors or even spelling errors.
 
